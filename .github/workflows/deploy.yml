@@ -1,4 +1,4 @@
-name: Deploy JAVA CLIENTE App to VPS (no git)
+name: Deploy JAVA NOTIFICATION App to VPS (no git)
 
 on:
   push:
@@ -20,7 +20,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           source: "."
-          target: "/home/Cliente/docker-cliente/cliente"
+          target: "/home/Cliente/docker-notificacion/notification"
 
       - name: Restart Docker container
         uses: appleboy/ssh-action@v0.1.10
@@ -29,10 +29,10 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-           cd /home/Cliente/docker-cliente/cliente
-           docker stop cliente-container || true
-           docker rm cliente-container || true
-           docker rmi mi-cliente || true
-           docker build -t mi-cliente .
-           docker run -d --name cliente-container --network host -p 8090:8090 mi-cliente
+           cd /home/Cliente/docker-notificacion/notification
+           docker stop notificacion-container || true
+           docker rm notificacion-container || true
+           docker rmi mi-notificacion || true
+           docker build -t mi-notificacion .
+           docker run -d --name notificacion-container --network host -p 8091:8091 mi-notificacion
            docker ps -a
