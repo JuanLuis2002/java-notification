@@ -1,4 +1,4 @@
-name: Deploy JAVA NOTIFICATION App to VPS (no git)
+name: Deploy JAVA NOTIFICATION App to VPS (git)
 
 on:
   push:
