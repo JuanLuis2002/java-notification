@@ -26,7 +26,7 @@ public class EmailServiceImpl implements EmailService {
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
             helper.setTo(correoDto.getEmail());
             helper.setSubject(correoDto.getObservaciones());
-            helper.setText(correoDto.getDireccion(), true);
+            helper.setText("Dirección: " + correoDto.getDireccion() + " Teléfono: " + correoDto.getTelefono(), true);
             helper.setFrom("loquendor34@gmail.com");
             javaMailSender.send(mimeMessage);
         } catch (MailException | MessagingException e) {
