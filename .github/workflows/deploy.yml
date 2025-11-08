@@ -34,5 +34,5 @@ jobs:
            docker rm notificacion-container || true
            docker rmi mi-notificacion || true
            docker build -t mi-notificacion .
-           docker run -d --name notificacion-container -p 8091:8091 --memory="512m" mi-notificacion
+           docker run -d --name notificacion-container --network notification-net -p 8091:8091 --memory="512m" mi-notificacion
            docker ps -a
